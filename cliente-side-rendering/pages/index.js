@@ -6,11 +6,6 @@ const usePokemon = (query) => {
   const [pokemons, setPokemons] = React.useState(null);
 
   React.useEffect(() => {
-    if (!query) {
-      setPokemons(null);
-      return;
-    }
-
     const getPokemon = async () => {
       const data = await fetch(`/api/search?q=${escape(query)}`).then(res => res.json());
       setPokemons(data.map(e => ({
