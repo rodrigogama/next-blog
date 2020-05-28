@@ -1,0 +1,61 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body, #__next {
+  font-family: 'SF Pro Text', 'SF Pro Icons', 'Helvetica Neue', 'Helvetica',
+    'Arial', sans-serif;
+  padding: 0;
+  margin: 0;
+  height: 100%;
+}
+
+.container {
+  max-width: 768px;
+  margin: 0 auto;
+  padding: 16px;
+  height: 100%;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  padding: 20px 0;
+  flex-flow: wrap;
+}
+
+.card {
+  border: 1px solid dimgray;
+  border-radius: 4px;
+  min-height: 180px;
+  min-width: 180px;
+  flex-shrink: 0;
+  margin: 4px;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.card.clickable {
+  cursor: pointer;
+}
+
+.card--title {
+  text-align: center;
+  font-size: 24px;
+}
+
+.card--subtitle {
+  text-align: center;
+  font-size: 20px;
+}
+
+.card--details {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
