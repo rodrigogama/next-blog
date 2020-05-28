@@ -28,7 +28,7 @@ export default function Home() {
   return (
     <div className="container">
       <Head>
-        <title>Pokemon - Server Side</title>
+        <title>Pokemon - Static Site Generation</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 

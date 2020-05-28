@@ -1,21 +1,25 @@
 import Head from 'next/head';
 import Link from 'next/link';
+import pokemons from '../../pokemon.json';
 
-const getPokemon = (name) => {
-  return fetch(`http://localhost:4000/api/pokemon?name=${escape(name)}`).then(async res => {
-    const text = await res.text();
-    return text ? JSON.parse(text) : {};
-  });
+export async function getStaticPaths() {
+  return {
+    paths: pokemons.map(p => ({
+      params: {
+        name: p.name.toLowerCase(),
+      }
+    })),
+    fallback: false // See the "fallback" section below
+  };
 }
 
-export async function getServerSideProps(context) {
-  const data = await getPokemon(context.params.name);
-
+export async function getStaticProps(context) {
+  const pokemon = pokemons.find(p => p.name.toLocaleLowerCase() === context.params.name);
   return {
     props: {
       pokemon: {
-        ...data,
-        image: `/images/${data.id}.png`
+        ...pokemon,
+        image: `/images/${pokemon.id}.png`
       }
     }, // will be passed to the page component as props
   }
@@ -45,7 +49,7 @@ export default ({ pokemon }) => {
                 </span>
               ))}
             </div>
-          ) : <h1>{`Pokemon "${name}" não encontrado.`}</h1>}
+          ) : <h1>{`Pokemon "${pokemon.name}" não encontrado.`}</h1>}
         </div>
       </main>
     </div>

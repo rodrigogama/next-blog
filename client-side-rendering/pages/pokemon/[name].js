@@ -33,6 +33,9 @@ const usePokemon = (name) => {
 
 export default () => {
   const { query: { name } } = useRouter();
+
+  if (!name) return null;
+
   const pokemon = usePokemon(name);
 
   return (
